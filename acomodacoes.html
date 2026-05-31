@@ -588,4 +588,17 @@
       }
 
       prevBtn.addEventListener('click', function() { go(current - 1); });
-      ne
+      nextBtn.addEventListener('click', function() { go(current + 1); });
+
+      // Swipe
+      var startX = 0;
+      carousel.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, {passive: true});
+      carousel.addEventListener('touchend', function(e) {
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) go(current + (diff > 0 ? 1 : -1));
+      }, {passive: true});
+    });
+  </script>
+
+</body>
+</html>
