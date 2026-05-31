@@ -113,7 +113,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('CHALES/03.ESPACO_EXTERNO/DSC09175.JPG') center/cover no-repeat;
+      background: url('CHALES/10.%20FOTOS%20SITE/capa1.JPG') center/cover no-repeat;
     }
 
     .hero-overlay {
@@ -313,9 +313,9 @@
 
     .about-images {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 260px 180px;
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
+      align-items: start;
     }
 
     .about-img {
@@ -325,15 +325,12 @@
 
     .about-img img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
       transition: transform 0.4s;
     }
 
-    .about-img:hover img { transform: scale(1.03); }
-
-    .about-img.tall { grid-row: span 2; }
+    .about-img:hover img { transform: scale(1.02); }
 
     .about-text .section-text {
       margin-bottom: 24px;
@@ -385,8 +382,8 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: 300px 300px;
       gap: 12px;
+      align-items: start;
     }
 
     .gallery-item {
@@ -397,8 +394,7 @@
 
     .gallery-item img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
       transition: transform 0.5s;
     }
@@ -630,7 +626,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: url('CHALES/06.%20PARQUE%20ESTADUAL%20DO%20PICO%20DO%20ITAMBE/Pico-do-Itamb%C3%A9-Visto-do-Serro-MG.jpg') center/cover;
+      background: url('CHALES/10.%20FOTOS%20SITE/pico1.jpg') center/cover;
       opacity: 0.12;
     }
 
@@ -789,6 +785,66 @@
     .cs-dot.active { background: white; transform: scale(1.2); }
 
     /* ── RESPONSIVE ── */
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--terra);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: white;
+      border-bottom: 1px solid var(--cinza-leve);
+      z-index: 99;
+      padding: 16px 24px 24px;
+      flex-direction: column;
+      gap: 0;
+      box-shadow: 0 4px 20px rgba(44,31,10,0.1);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--terra);
+      text-decoration: none;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--cinza-leve);
+      opacity: 0.8;
+    }
+    .mobile-menu a:last-child { border-bottom: none; margin-top: 8px; }
+    .mobile-menu .nav-cta-mobile {
+      background: var(--verde);
+      color: white !important;
+      text-align: center;
+      padding: 14px;
+      border-radius: 2px;
+      font-weight: 600;
+      opacity: 1;
+      margin-top: 8px;
+      border-bottom: none;
+    }
+
     @media (max-width: 900px) {
       nav { padding: 16px 24px; }
       .nav-links { gap: 20px; }
@@ -796,23 +852,44 @@
       .about, .location { grid-template-columns: 1fr; gap: 40px; }
       .chale-card { grid-template-columns: 1fr; }
       .chale-card.reverse { direction: ltr; }
-      .chale-gallery { height: 300px; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-      .gallery-item.wide { grid-column: span 2; }
+      .chale-gallery { height: 320px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
       footer { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px; }
       .intro-strip { padding: 36px 24px; }
       .hero-content { padding: 0 24px 56px; }
+      .about-images { grid-template-columns: 1fr; }
+      .final-cta .actions { flex-direction: column; align-items: center; }
+      .cta-banner .actions { flex-direction: column; align-items: center; }
     }
 
     @media (max-width: 600px) {
       .nav-links { display: none; }
+      .hamburger { display: flex; }
       .gallery-grid { grid-template-columns: 1fr; }
       .gallery-item.wide { grid-column: span 1; }
       .features-grid { grid-template-columns: 1fr; }
-      .about-images { grid-template-columns: 1fr; grid-template-rows: auto; }
-      .about-img.tall { grid-row: span 1; }
-      .chale-info { padding: 32px 24px; }
-      #acomodacoes, .gallery, .quote-section, .cta-banner, .final-cta { padding: 64px 24px; }
+      .about-images { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .chale-info { padding: 28px 20px; }
+      .chale-gallery { height: 260px; }
+      #acomodacoes, .gallery, .quote-section, .cta-banner, .final-cta { padding: 56px 20px; }
+      .hero h1 { font-size: 2rem; }
+      .hero-sub { font-size: 0.95rem; }
+      .hero-content { padding: 0 20px 48px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions a { text-align: center; justify-content: center; }
+      .amenities { gap: 8px; }
+      .chale-actions { flex-direction: column; }
+      .chale-actions a { text-align: center; justify-content: center; }
+      .intro-strip { flex-direction: column; gap: 20px; text-align: center; }
+      .mid-cta { padding: 40px 20px; }
+      .quote-section blockquote { font-size: 1.2rem; }
+      .nearby-list li { font-size: 0.85rem; }
+      .footer-bottom { padding: 14px 20px; }
+      .final-cta .actions { flex-direction: column; align-items: stretch; }
+      .final-cta .actions a { text-align: center; justify-content: center; }
+      .cs-btn { width: 32px; height: 32px; font-size: 1.2rem; }
+      .location > div:last-child { height: 280px !important; }
+      footer { padding: 32px 20px; }
     }
   </style>
 </head>
@@ -835,7 +912,18 @@
       <li><a href="acomodacoes.html">Acomodações</a></li>
       <li><a href="https://wa.me/5531995039550?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20uma%20reserva." target="_blank" class="nav-cta">Reservar agora</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#home">Início</a>
+    <a href="#capivari">A Região</a>
+    <a href="acomodacoes.html">Acomodações</a>
+    <a href="https://wa.me/5531995039550?text=Ol%C3%A1!%20Quero%20fazer%20uma%20reserva." target="_blank" class="nav-cta-mobile">Reservar agora</a>
+  </div>
 
   <!-- Hero -->
   <section id="home" class="hero" style="padding:0;">
@@ -864,14 +952,14 @@
   <!-- About Capivari -->
   <div id="capivari" class="about">
     <div class="about-images">
-      <div class="about-img tall">
-        <img src="CHALES/09.%20CIDADE%20CAPIVARI/20250323_122636.jpg" alt="Capivari">
+      <div class="about-img">
+        <img src="CHALES/10.%20FOTOS%20SITE/capivari1.jpg" alt="Capivari">
       </div>
       <div class="about-img">
-        <img src="CHALES/04.%20CACHOEIRAS%20CAPIVARI/AMARAL2.jpg" alt="Cachoeira do Amaral">
+        <img src="CHALES/10.%20FOTOS%20SITE/capivari2.jpg" alt="Capivari">
       </div>
       <div class="about-img">
-        <img src="CHALES/09.%20CIDADE%20CAPIVARI/20250323_155224.jpg" alt="Vista de Capivari" style="transform: rotate(90deg) scale(1.45); transform-origin: center; object-position: center 30%;">
+        <img src="CHALES/10.%20FOTOS%20SITE/capivari3.jpg" alt="Capivari">
       </div>
     </div>
     <div class="about-text">
@@ -920,19 +1008,19 @@
     </div>
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img src="CHALES/04.%20CACHOEIRAS%20CAPIVARI/TRESMARIAS7.JPG" alt="Cachoeira Três Marias" style="object-position: center 60%;">
-        <div class="gallery-caption">Cachoeira Três Marias</div>
+        <img src="CHALES/10.%20FOTOS%20SITE/cachoeiras1.jpg" alt="Cachoeiras de Capivari">
+        <div class="gallery-caption">Cachoeiras de Capivari</div>
       </div>
       <div class="gallery-item">
-        <img src="CHALES/04.%20CACHOEIRAS%20CAPIVARI/cachoeira-do-tempo-perdido.jpg" alt="Cachoeira do Tempo Perdido">
-        <div class="gallery-caption">Cachoeira do Tempo Perdido</div>
+        <img src="CHALES/10.%20FOTOS%20SITE/cachoeiras2.jpg" alt="Cachoeira">
+        <div class="gallery-caption">Cachoeiras de Capivari</div>
       </div>
       <div class="gallery-item">
-        <img src="CHALES/04.%20CACHOEIRAS%20CAPIVARI/20250503_141404.jpg" alt="Cachoeira com arco-íris" style="object-position: center 40%;">
-        <div class="gallery-caption">Cachoeira do Amaral</div>
+        <img src="CHALES/10.%20FOTOS%20SITE/cachoeiras3.JPG" alt="Cachoeira">
+        <div class="gallery-caption">Cachoeiras de Capivari</div>
       </div>
       <div class="gallery-item">
-        <img src="CHALES/04.%20CACHOEIRAS%20CAPIVARI/AMARAL2.jpg" alt="Cachoeira do Amaral">
+        <img src="CHALES/10.%20FOTOS%20SITE/cachoeiras4.jpg" alt="Cachoeiras de Capivari">
         <div class="gallery-caption">Cachoeiras de Capivari</div>
       </div>
     </div>
@@ -963,17 +1051,19 @@
     <div class="chale-card">
       <div class="chale-gallery carousel" id="c-chalezinho">
         <div class="cs-track">
-          <div class="cs-slide active"><img src="CHALES/01.CHALEZINHO/frentechalezinho.JPG" alt="Frente do Chalezinho"></div>
-          <div class="cs-slide"><img src="CHALES/01.CHALEZINHO/20231001_081547.jpg" alt="Banheiro"></div>
-          <div class="cs-slide"><img src="CHALES/01.CHALEZINHO/20231001_073201.jpg" alt="Quarto casal"></div>
-          <div class="cs-slide"><img src="CHALES/01.CHALEZINHO/WhatsApp%20Image%202023-10-02%20at%2011.41.33.jpeg" alt="Varanda com vista"></div>
-          <div class="cs-slide"><img src="CHALES/01.CHALEZINHO/WhatsApp%20Image%202023-08-22%20at%2011.11.42%20(2).jpeg" alt="Cozinha e sala"></div>
-          <div class="cs-slide rotated"><img src="CHALES/01.CHALEZINHO/20250323_132848.jpg" alt="Interior teto de madeira"></div>
+          <div class="cs-slide active"><img src="CHALES/10.%20FOTOS%20SITE/chalezinho1.JPG" alt="Chalezinho"></div>
+          <div class="cs-slide"><img src="CHALES/10.%20FOTOS%20SITE/chalezinho3.jpeg" alt="Chalezinho"></div>
+          <div class="cs-slide"><img src="CHALES/10.%20FOTOS%20SITE/chalezinho6.jpg" alt="Chalezinho"></div>
+          <div class="cs-slide"><img src="CHALES/10.%20FOTOS%20SITE/chalezinho8.jpeg" alt="Chalezinho"></div>
+          <div class="cs-slide"><img src="CHALES/10.%20FOTOS%20SITE/chalezinho9.jpg" alt="Chalezinho"></div>
+          <div class="cs-slide"><img src="CHALES/10.%20FOTOS%20SITE/chalezinho12.jpeg" alt="Chalezinho"></div>
+          <div class="cs-slide"><img src="CHALES/10.%20FOTOS%20SITE/ext1.jpg" alt="Área externa"></div>
         </div>
         <button class="cs-btn cs-prev">&#8249;</button>
         <button class="cs-btn cs-next">&#8250;</button>
         <div class="cs-dots">
           <button class="cs-dot active"></button>
+          <button class="cs-dot"></button>
           <button class="cs-dot"></button>
           <button class="cs-dot"></button>
           <button class="cs-dot"></button>
@@ -1010,12 +1100,12 @@
     <div class="chale-card reverse">
       <div class="chale-gallery carousel" id="c-torre">
         <div class="cs-track">
-          <div class="cs-slide active"><img src="CHALES/02.CHALE_DA_TORRE/frentechaledatorre.jpg" alt="Frente do Chalé da Torre"></div>
-          <div class="cs-slide"><img src="CHALES/02.CHALE_DA_TORRE/20250323_124022.jpg" alt="Cozinha e sala"></div>
-          <div class="cs-slide"><img src="CHALES/02.CHALE_DA_TORRE/20250323_123911.jpg" alt="Quarto"></div>
-          <div class="cs-slide"><img src="CHALES/02.CHALE_DA_TORRE/20250323_123856.jpg" alt="Quarto superior"></div>
-          <div class="cs-slide"><img src="CHALES/02.CHALE_DA_TORRE/20250323_123848.jpg" alt="Banheiro"></div>
-          <div class="cs-slide"><img src="CHALES/02.CHALE_DA_TORRE/WhatsApp%20Image%202023-08-22%20at%2011.11.41%20(1).jpeg" alt="Interior Chalé da Torre"></div>
+          <div class="cs-slide active"><img src="CHALES/10.%20FOTOS%20SITE/torre1.jpg" alt="Chalé da Torre"></div>
+          <div class="cs-slide"><img src="CHALES/10.%20FOTOS%20SITE/torre3.jpg" alt="Chalé da Torre"></div>
+          <div class="cs-slide"><img src="CHALES/10.%20FOTOS%20SITE/torre4.jpg" alt="Chalé da Torre"></div>
+          <div class="cs-slide"><img src="CHALES/10.%20FOTOS%20SITE/torre5.jpg" alt="Chalé da Torre"></div>
+          <div class="cs-slide"><img src="CHALES/10.%20FOTOS%20SITE/torre6.jpg" alt="Chalé da Torre"></div>
+          <div class="cs-slide"><img src="CHALES/10.%20FOTOS%20SITE/torre8.jpg" alt="Chalé da Torre"></div>
         </div>
         <button class="cs-btn cs-prev">&#8249;</button>
         <button class="cs-btn cs-next">&#8250;</button>
@@ -1134,6 +1224,25 @@
   <div class="footer-bottom">
     © 2026 Chalés Pico do Itambé · Capivari, Serro, Minas Gerais
   </div>
+
+  <script>
+    // Hamburger menu
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger) {
+      hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+      });
+      // Close on link click
+      mobileMenu.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+        });
+      });
+    }
+  </script>
 
   <script>
     document.querySelectorAll('.carousel').forEach(function(carousel) {
